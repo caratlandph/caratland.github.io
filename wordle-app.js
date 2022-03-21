@@ -37,7 +37,6 @@ if (isSameDateAs(now, new Date("Mar 22 2022"))){
 } else {
     rightGuessString = WORDS[Math.floor(Math.random() * WORDS.length)];
 }
-//  console.log(rightGuessString)   
 function initBoard() {
     let board = document.getElementById("game-board");
     
@@ -54,24 +53,7 @@ function initBoard() {
         board.appendChild(row)
     }
 }
-// function initResultEmoji() {
-//     let board = document.getElementById("result-board");
-    
-//     for (let i = 0; i < NUMBER_OF_GUESSES; i++) {
-//         let row = document.createElement("div")
-//         row.className = "result-row"
-        
-//         for (let j = 0; j < 5; j++) {
-//             let box = document.createElement("div")
-//             let emoji
-//             box.className = "result-box"
-//             box.appendChild = 
-//             row.appendChild(box)
-//         }
 
-//         board.appendChild(row)
-//     }
-// }
 function shadeKeyBoard(letter, color) {
     for (const elem of document.getElementsByClassName("keyboard-button")) {
         if (elem.textContent === letter) {
@@ -177,8 +159,6 @@ function checkGuess () {
         }
         resString = "CARAT들 beautiful!\n\n"+resString
         console.log(resString)
-        // document.getElementById('result-board').innerHTML = document.getElementById('result-board').innerHTML.replace('No result yet!',resString);
-        // document.getElementById('result-board').innerHTML = document.getElementById('result-board').innerHTML.replace('\n','&nbsp;');
         guessesRemaining = 0
         return
     } else {
@@ -279,7 +259,6 @@ var modal2 = document.getElementById("resultModal");
 var btn = document.getElementById("myBtn");
 var btn2 = document.getElementById("share")
 // Get the <span> element that closes the modal
-console.log(document.getElementsByClassName("close"))
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
