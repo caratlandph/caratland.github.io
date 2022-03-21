@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
+    <title>CARAT들</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+	<link href="https://www.nytimes.com/games/wordle/images/NYT-Wordle-Icon-32.png" rel="icon shortcut" sizes="3232">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+<body>
+    <header>
+        <div class="menu-left">
+            <svg id="myBtn" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path fill="gray" d="M11 18h2v-2h-2v2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm0-14c-2.21 0-4 1.79-4 4h2c0-1.1.9-2 2-2s2 .9 2 2c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5 0-2.21-1.79-4-4-4z"></path>
+            </svg>
+        </div>
+        <div class="title">
+            <img src="./caratdeul.png" alt="CARAT들" style="width:150px;height:150%;">
+        </div>
+        <div class="menu-right">
+            <svg id="share" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                <path fill="gray" d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92zM18 4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zM6 13c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm12 7.02c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"></path>
+            </svg>
+        </div>
+    </header>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>
+                Guess the <b>CARAT들</b> in six tries.<br><br>
+                Each guess must be a valid five-letter word. Hit the enter button to submit.<br><br>
+                After each guess, the color of the tiles will change to show how close your guess was to the word.
+            </p>
+            <hr>
+            <b>
+                Examples
+            </b>
+            <br><br>
+            <div class="letter-row-ex">
+                <div class="letter-box-ex" style="color: black; background-color: #f7cac9;">W</div>
+                <div class="letter-box-ex">E</div>
+                <div class="letter-box-ex">A</div>
+                <div class="letter-box-ex">R</div>
+                <div class="letter-box-ex">Y</div>
+            </div>
+            <div style="display: flex;
+                        max-width: 100%;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
+                        flex-wrap: nowrap;
+                        padding: 0 16px;">
+                <p>The letter W is in the word and in the correct spot.</p><span id="diamond">&#128142;</span>
+            </div>
+            <br>
+            <div class="letter-row-ex">
+                <div class="letter-box-ex">P</div>
+                <div class="letter-box-ex" style="color: black; background-color: #b3cee5;">I</div>
+                <div class="letter-box-ex">L</div>
+                <div class="letter-box-ex">L</div>
+                <div class="letter-box-ex">S</div>
+            </div>
+            <div style="display: flex;
+                        max-width: 100%;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
+                        flex-wrap: nowrap;
+                        padding: 0 16px;">
+                <p>The letter I is in the word but in the wrong spot.</p><span id="orange">&#128310;</span>
+            </div>
+            <br>
+            <div class="letter-row-ex">
+                <div class="letter-box-ex">V</div>
+                <div class="letter-box-ex">A</div>
+                <div class="letter-box-ex">G</div>
+                <div class="letter-box-ex" style="color: black; background-color: #e8e4c9;">U</div>
+                <div class="letter-box-ex">E</div>
+            </div>
+            <div style="display: flex;
+                        max-width: 100%;
+                        flex-direction: row;
+                        align-items: center;
+                        justify-content: space-between;
+                        flex-wrap: nowrap;
+                        padding: 0 16px;">
+                <p>The letter U is not in the word in any spot.</p><span id="white">&#11036;</span>
+            </div>
+            <hr>
+            <p>New word everyday until D-Day!</p>
+            <div class="letter-row-ex">
+                <div class="letter-box-ex" id="days" style="color: black; background-color: #e8e4c9;"></div>
+                <div class="letter-box-ex" style="color: black; background-color: #f7cac9;">d</div>
+                <div class="letter-box-ex" id="hours" style="color: black; background-color: #e8e4c9;"></div>
+                <div class="letter-box-ex" style="color: black; background-color: #b3cee5;">h</div>
+                <div class="letter-box-ex" id="minutes" style="color: black; background-color: #e8e4c9;"></div>
+                <div class="letter-box-ex" style="color: black; background-color: #f7cac9;">m</div>
+                <div class="letter-box-ex" id="seconds" style="color: black; background-color: #e8e4c9;"></div>
+                <div class="letter-box-ex" style="color: black; background-color: #b3cee5;">s</div>
+            </div>
+        </div>
+        
+    </div>
+    <div id="game-board">
+        
+    </div>
+
+    <div id="keyboard-cont">
+        <div class="first-row">
+            <button class="keyboard-button">q</button>
+            <button class="keyboard-button">w</button>
+            <button class="keyboard-button">e</button>
+            <button class="keyboard-button">r</button>
+            <button class="keyboard-button">t</button>
+            <button class="keyboard-button">y</button>
+            <button class="keyboard-button">u</button>
+            <button class="keyboard-button">i</button>
+            <button class="keyboard-button">o</button>
+            <button class="keyboard-button">p</button>
+        </div>
+        <div class="second-row">
+            <button class="keyboard-button">a</button>
+            <button class="keyboard-button">s</button>
+            <button class="keyboard-button">d</button>
+            <button class="keyboard-button">f</button>
+            <button class="keyboard-button">g</button>
+            <button class="keyboard-button">h</button>
+            <button class="keyboard-button">j</button>
+            <button class="keyboard-button">k</button>
+            <button class="keyboard-button">l</button>
+        </div>
+        <div class="third-row">
+            <button class="keyboard-button">←</button>
+            <button class="keyboard-button">z</button>
+            <button class="keyboard-button">x</button>
+            <button class="keyboard-button">c</button>
+            <button class="keyboard-button">v</button>
+            <button class="keyboard-button">b</button>
+            <button class="keyboard-button">n</button>
+            <button class="keyboard-button">m</button>
+            <button class="keyboard-button">↵</button>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-left"></div>
+        <div class="footer-text" style="color: #D5D5D5;">
+            &copy; CaratLand PH<br>
+            Developed by DAC<br>
+            Graphics by FCB
+        </div>
+        <div class="footer-right"></div>
+    </footer>
+<script
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="/wordle-app.js" type="module"></script>
+</body>
+</html>
